@@ -1,0 +1,15 @@
+//------------Fizz  Loop Method ----
+function fizzbuzz (num) {
+    for(let i = 0; i< num; i++){
+        if(i % 3 === 0 && i % 5 === 0) {
+            console.log('fizzbuzz!')
+        }
+        if(num%3 === 0 ){
+            console.log('fizz')
+        }
+        if(num % 5 === 0){
+            console.log('Buzz')
+        }
+    }
+}
+fizzbuzz(100)
