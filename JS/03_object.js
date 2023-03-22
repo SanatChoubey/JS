@@ -54,7 +54,7 @@ var bbc = {
     a: 1,
     b: 2
 }
-// --------- seal
+// --------- seal --------------
 // creates an object
 var obj = {
     // assigns 10 to value
@@ -79,7 +79,7 @@ console.log(obj.value); // 10
 // console.log(Object.preventExtensions(bbc))
 
 
-// -------------array reference  ----
+// -------------array reference  ---- ------------ 
 
 // const arr =  [1,2, {a: {b: 'c'}}]
  

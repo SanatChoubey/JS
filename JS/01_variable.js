@@ -10,8 +10,9 @@
 // 8. Object
 
 
-//-------- statement ---------
-
+//-------- statement --------- Most statements in JavaScript conclude with a semicolon (;) at the end.
+// Expressions
+// Statements are made up of one or more expressions. An expression is any reference to a variable or value, or a set of variable(s) and value(s) combined with operators.
 let x, y, z;    // Statement 1
 x = 5;          // Statement 2
 y = 6;          // Statement 3
@@ -75,18 +76,18 @@ var obj1 =  5;
 var obj2  = obj1;
 console.log('current  value  of obj after assigning obj1',obj2)
 obj1 = 10 
-console.log('current value after reassigning obj1 ', obj2) // clear show that it is pass by value value is assigned 
+console.log('current value after reassigning obj1 ', obj2) //  5 clear show that it is pass by value value is assigned 
  // check for array 
  var arr1 = [1,2]
  var arr2 = arr1
- console.log('current  value  of arr after assigning arr1',arr2)
+ console.log('current  value  of arr after assigning arr1',arr2) // [1,2]
 arr1 = [3,4]
-console.log('current value after reassigning arr1 ', arr2) 
+console.log('current value after reassigning arr1 ', arr2)  //[1,2]
 // -------- shallow copy vs deep copy --------
 const obj = { name: 'Version 1', additionalInfo: { version: 1 } };
 
-const shallowCopy1 = { ...obj };
-const shallowCopy2 = Object.assign({}, obj);
+const shallowCopy1 = { ...obj }; // shallow copy
+const shallowCopy2 = Object.assign({}, obj); // shallow copy
 
 shallowCopy1.name = 'Version 2';
 shallowCopy1.additionalInfo.version = 2;
@@ -94,8 +95,8 @@ shallowCopy1.additionalInfo.version = 2;
 shallowCopy2.name = 'Version 2';
 shallowCopy2.additionalInfo.version = 3;
 
-console.log(obj); // { name: 'Version 1', additionalInfo: { version: 2 } }
-console.log(shallowCopy1); // { name: 'Version 2', additionalInfo: { version: 2 } }
+console.log(obj); // { name: 'Version 1', additionalInfo: { version: 3 } }
+console.log(shallowCopy1); // { name: 'Version 2', additionalInfo: { version: 3 } }
 console.log(shallowCopy2); 
 
 //
