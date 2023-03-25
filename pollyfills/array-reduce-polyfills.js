@@ -1,15 +1,31 @@
+function reduce(callback, initialValue) {
+	if (this === null || this === undefined) {
+		throw new TypeError(
+			'Array.prototype.reduce called on null or undefined'
+		);
+	}
 
-Array.prototype.myreduce = function(cb, args){
-    if(arguments.length  === 0) {
-        throw new Error('required 2 argument but got 0')
-    }
-    if(typeof cb !== 'function') {
-        throw new TypeError('cb is not a function!')
-    }
-    var state = args ?  args: this[0]
-    for(var i = 0; i < this.length; i++) {
-        cb(state, this[i], i, this )
-    }
-    return state
-    
+	if (!callback || typeof callback !== 'function') {
+		throw new TypeError(`${callback} is not a function`);
+	}
+
+	if (!this.length) {
+		if (arguments.length < 2) {
+			throw new TypeError('Reduce of empty array with no initial value');
+		} else if (arguments.length === 2) {
+			return initialValue;
+		}
+	}
+
+	var k = 0;
+	var acc = arguments.length < 2 ? this[k++] : initialValue;
+
+	while (k < this.length) {
+		if (Object.prototype.hasOwnProperty.call(this, k)) {
+			acc = callback(acc, this[k], k, this);
+		}
+		k++;
+	}
+
+	return acc;
 }

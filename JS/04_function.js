@@ -61,12 +61,47 @@
 // foo();
 
 // this code is not strict mode
+
+// function foo() {
+// 	"use strict";
+
+// 	console.log( this.a );
+// }
+
+// var a = 2;
+
+// foo(); // TypeError: `this` is `undefined`
+// function foo() {
+// 	console.log( this.a );
+// }
+
+// var a = 2;
+
+// (function(){
+// 	"use strict";
+
+// 	foo(); // 2
+// })();
+// Parameter passing is just an implicit assignment, and since we're passing a function,
+
+// function Foo() {
+// 	// ...
+// }
+
+// Foo.prototype.constructor === Foo; // true
+
+// var a = new Foo();
+// a.constructor === Foo; // true
 // -----------------there is an big gotcha --------------
 // regular fn vs fat arrow function
-//  1- argument keyword will not work in fat arrow function
+//  1- arguments keyword will not work in fat arrow function
 // 2-  hoisting in fat arrow
 // 3 - dynamic this in regular fn and fat arrow have outer scope
 //  no calling method in => i.e call, bind, apply
 
+// TODO: 
+// 1-  Understand Composite fn 
+//  2 - Understand Pure Fn
+// 
 
 

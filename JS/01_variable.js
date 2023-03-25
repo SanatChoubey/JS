@@ -1,5 +1,6 @@
 // Data Type
-
+// Simple values (aka scalar primitives) are always assigned/passed by value-copy: null, undefined, string, number, boolean, and ES6's symbol.
+// Compound values -- objects (including arrays, and all boxed object wrappers )and functions -- always create a copy of the reference on assignment or passing.
 // 1. String
 // 2. Number
 // 3. Bigint
@@ -101,3 +102,27 @@ console.log(shallowCopy2);
 
 //
 //  array and object are reference value
+
+// function foo() {
+// 	undefined = 2; // really bad idea!
+// }
+
+// foo();
+// function foo() {
+// 	"use strict";
+// 	undefined = 2; // TypeError!
+// }
+
+// foo();
+// In both non-strict mode and strict mode, however, you can create a local variable of the name undefined. But again, this is a terrible idea!
+
+// function foo() {
+// 	"use strict";
+// 	var undefined = 2;
+// 	console.log( undefined ); // 2
+// }
+
+// foo();
+
+// var a = 0 / -3; // -0
+// var b = 0 * -3; // -0
