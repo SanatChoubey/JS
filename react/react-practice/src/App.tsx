@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -22,11 +22,20 @@ function App() {
       }
     }
   }
+  const dropRef: any = useRef()
   const [treeArr, setTreeArray] = useState([])
+  const [openState, setOpenState] = useState(false)
+  useEffect(() => {
+    document.addEventListener('click', (e) => {
+      console.log('hello', dropRef?.current?.contains(e.target))
+      if(!dropRef?.current?.contains(e.target)){
+        setOpenState(false)
+      }
+    })
+  }, [dropRef])
   const deepClear: any = (element: any) => {
     let temp = []
     for(let k in element ){
-      console.log(typeof element[k])
       if(typeof element[k] != 'object') {
         temp.push({key:Math.trunc( Math.random() * 400), expanded: false, value: k , children: null})
       }else {
@@ -36,7 +45,6 @@ function App() {
     return temp
   }
   useEffect(() => {
-    console.log(Object.values(treeObj))
     setTreeArray(deepClear(treeObj))
   }, [])
   const images = [
@@ -48,9 +56,6 @@ function App() {
     "https://images.unsplash.com/photo-1513415564515-763d91423bdd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
     "https://images.unsplash.com/photo-1517309246852-c500628fefad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
   ];
-  useEffect(() => {
-    console.log('called')
-  }, [])
   return (<div style={{display: 'flex', flexDirection:'column'}}>
     {
       images.map((e) => {
@@ -60,10 +65,19 @@ function App() {
      {/* traverse html v document */}
     {
       treeArr.map((elem: any) => {
-        console.log(elem, elem.expanded)
         return <TreeCompo key={elem.key} data={elem.value} expanded={elem.expanded} children={elem.children}  />
       })
     }
+    <button onClick={(e) => {
+      setOpenState(true)
+      e.stopPropagation();
+    }}>Click Me</button>
+    {openState && <div ref={dropRef}>
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+    </div>}
     </div>
   )
 }
