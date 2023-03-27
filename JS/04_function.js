@@ -98,7 +98,7 @@
 // 2-  hoisting in fat arrow
 // 3 - dynamic this in regular fn and fat arrow have outer scope
 //  no calling method in => i.e call, bind, apply
-
+// 4 -  all the constructor function return this and if non primitive value is return then return same
 // TODO: 
 // 1-  Understand Composite fn 
 //  2 - Understand Pure Fn
